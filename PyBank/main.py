@@ -3,55 +3,60 @@ import os
 
 budget_df = os.path.join("Resources","budget_data.csv")
 
-## This is the title of the script DONE
-print("Financial Analysis")
-print("--------------------")
 
-# Obviously we need a for loop to go through each row
-# we need a way to caputure sum values of months, net amount
-# we need a way to caputure and calculate average
-# we need an if statement on greatest increase in profits
-# and another if statement on greatest decrease in profits
+total = 0
+change = 0
+minvalue = 0
+maxvalue = 0
 
-
-
-# Calculate total number of months in the data set DONE
 
 with open(budget_df, newline="") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     csv_header = next(csvfile)
     
     month_count = sum(1 for month in csvfile)
-    print(f"Total Months: {month_count}")
+
 
 with open(budget_df, newline="") as csvfile:
     csv_header = next(csvfile)
     
-    total = 0
+
     for row in csv.reader(csvfile):
         total += int(row[1])
-    print (f"Total: ${total}")
-    
-    
-    def average(row[1]):
-        col_l = len(row[1])
+        change -= int(row[1])
+
+with open(budget_df, newline="") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=",")
+    csv_header = next(csvfile)
+
+    for row in csv.reader(csvfile):
+        value = float(row[1])
+        minvalue = min(minvalue, value)
+        maxvalue = max(maxvalue, value)
+
         
-        for number in row[1]s:
-            total += number
-            return total / col_l
-print(col_l)
+print("Financial Analysis")
+print("--------------------")       
+print(f"Total Months: {month_count}")       
+print(f"Total: ${total}")
+print(f"Greatest Increase in Profits: " + "${:}".format(maxvalue))
+print("Greatest Decrease in Profits: " + "${:}".format(minvalue))
+    
 
-# calculate total net amount of profit/loss over the entire period
+file = open("main.txt", "w")
+file.write("Financial Analysis")
+file.write("\n")
+file.write("--------------------")
+file.write("\n")
+file.write(f"Total Months: {month_count}")
+file.write("\n")
+file.write(f"Total: ${total}")
+file.write("\n")
+file.write("Greatest Increase in Profits: " + "${:}".format(maxvalue) +")")
+file.write("\n")
+file.write("Greatest Decrease in Profits: " + "${:}".format(minvalue) +")")
+file.write("\n")
 
-
-
-# calculate aveage change in Profit/Losses between months over the entire period
-
-
-# calculate greatest increase in profits (date and amount) over the entire period
-
-# calculate greatest decrease in losses (date and amount) over the entire period
-
-# print the analysis to the terminal and export a text file with the results (could be already existing text file, or create a readme file (bookmarked))
+file.close()
 
 
